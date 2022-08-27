@@ -21,7 +21,7 @@ plt.style.use("fivethirtyeight")
 
 # # Investment in PIB's as a Proportion of their own invsetment portfolio
 
-# In[7]:
+# In[8]:
 
 
 # Different Bank Data
@@ -255,6 +255,57 @@ plt.title("Change in Bank Strategy - Investment to Deposit Ratio", loc="left")
 plt.ylabel("Difference between 2021 and 2012")
 plt.xlabel("Bank")
 plt.savefig("Investment_to_dep_ratio.png")
+plt.show()
+
+
+# ===================================================================================================================
+
+# # Sectoral ADR vs IDR 
+
+# In[7]:
+
+
+#Data of ADR and IDR
+adr = [58, 57, 55, 50, 48, 58, 62, 58, 56, 59]
+idr = [53, 50, 59, 69, 63, 65, 54, 58, 61, 70]
+
+# Values for X-axis
+x = np.arange(len(adr))
+
+# Values that replace X-axis values
+years = []
+for i in range(12, 22):
+    years.append("CY"+str(i))
+    
+# Defining the size of figure as well as the Size for title of the plot
+plt.rcParams["figure.figsize"] = (20, 10)
+plt.rcParams["axes.titlesize"] = 24
+
+# Plot ADR values
+plt.plot(x, adr, label="ADR")
+
+# Fill area with Blue Color
+plt.fill_between(x, adr, alpha=0.25)
+
+# Plot IDR values
+plt.plot(x, idr, label="IDR")
+
+# Fill area between x and IDR with red color
+plt.fill_between(x, idr, alpha=0.25)
+
+# added limit on Y-axis values
+plt.ylim(0, 100)
+# Replace x-axis numerical values with Strings
+plt.xticks(ticks=x, labels=years)
+# Added title and makes it's position left of plot
+plt.title("Sectoral ADR vs IDR", loc="left", )
+# Definig the orientation and size for legend
+plt.legend(loc=(0.4, 0.8), ncol=2)
+# Grid Only added along X-axis
+plt.grid(axis="x")
+# Saving plot in png format
+plt.savefig("sectoral_adr_vs_idr.png")
+# Showing Plot
 plt.show()
 
 
