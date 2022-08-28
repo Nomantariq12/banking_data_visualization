@@ -21,8 +21,11 @@ plt.style.use("fivethirtyeight")
 
 # # Investment in PIB's as a Proportion of their own invsetment portfolio
 
-# In[3]:
+# In[9]:
 
+
+# Defining Size of Diagrams
+plt.rcParams["figure.figsize"] = (50, 10)
 
 # Different Bank Data
 dic = {
@@ -51,9 +54,6 @@ x = np.arange(len(data.columns))
 
 # setting the width of the bar plot
 width = 0.17
-
-# Defining Size of Diagrams
-plt.rcParams["figure.figsize"] = (50, 10)
 
 #Bar Plot for Year 2017
 plt.bar(x - (width * 2), data.iloc[0,:], width=width, label="2017")
@@ -94,6 +94,7 @@ plt.title("Investment in PIB's as a Proportion of their own investment portfolio
 plt.xlabel("Bank")
 # Replacing x Values(that are just numbers) to Bank Names
 plt.xticks(x, data.columns.str.upper())
+plt.yticks([i for i in range(0, 110, 20)], [str(i) + "%" for i in range(0, 110, 20)])
 plt.savefig("Investment_In_PIB's.png")
 plt.show()
 
@@ -176,7 +177,8 @@ plt.legend(loc=(0.4, 0.9), ncol=5)
 plt.title("Investment in t-bills as a Proportion of their own investment portfolio", loc="left")
 plt.xlabel("Bank")
 # Replacing x Values(that are just numbers) to Bank Names
-plt.xticks(x, data.columns.str.upper())
+plt.xticks(x1, data.columns.str.upper())
+plt.yticks([i for i in range(0, 110, 20)], [str(i) + "%" for i in range(0, 110, 20)])
 plt.savefig("Investment_In_tbills.png")
 plt.show()
 
@@ -218,6 +220,7 @@ plt.text(8, -1, "0%", color="black", va="center", ha="center")
 plt.title("Change in Bank Strategy - Advances to Deposits Ratio", loc="left")
 plt.ylabel("Difference between 2021 and 2012")
 plt.xlabel("Bank")
+plt.yticks([i for i in range(-20, 40, 10)], [str(i) + "%" for i in range(-20, 40, 10)])
 plt.savefig("Advances_to_Deposits Ratio.png")
 plt.show()
 
@@ -254,6 +257,7 @@ for y in range(12, len(banks)):
 plt.title("Change in Bank Strategy - Investment to Deposit Ratio", loc="left")
 plt.ylabel("Difference between 2021 and 2012")
 plt.xlabel("Bank")
+plt.yticks([i for i in range(-20, 100, 20)], [str(i) + "%" for i in range(-20, 100, 20)])
 plt.savefig("Investment_to_dep_ratio.png")
 plt.show()
 
@@ -278,7 +282,7 @@ for i in range(12, 22):
     years.append("CY"+str(i))
     
 # Defining the size of figure as well as the Size for title of the plot
-plt.rcParams["figure.figsize"] = (20, 10)
+plt.rcParams["figure.figsize"] = (20, 7)
 plt.rcParams["axes.titlesize"] = 24
 
 # Plot ADR values
@@ -297,6 +301,7 @@ plt.fill_between(x, idr, alpha=0.25)
 plt.ylim(0, 100)
 # Replace x-axis numerical values with Strings
 plt.xticks(ticks=x, labels=years)
+plt.yticks([i for i in range(0, 100, 20)], [str(i) + "%" for i in range(0, 100, 20)])
 # Added title and makes it's position left of plot
 plt.title("Sectoral ADR vs IDR", loc="left", )
 # Definig the orientation and size for legend
@@ -313,7 +318,7 @@ plt.show()
 
 # # Comparison of ADR in 2012 and 2021
 
-# In[23]:
+# In[8]:
 
 
 # Raw Data
@@ -325,6 +330,8 @@ names = "sbl fabl bafl bok bahl jsbl hmb bop mebl akbl mcb abl hbl ubl nbp snbl 
 bank_names = [i.upper() for i in names.split(" ")]
 # Creating Values for X-axis
 x = np.arange(len(adr12))
+# Percentage for Y a-axis
+y = [str(i) + "%" for i in range(0,140,20)]
 
 # Setting Styling, Figure Size and Title Size
 plt.style.use("fivethirtyeight")
@@ -343,6 +350,7 @@ plt.grid(axis="x")
 plt.ylim((0, 125))
 # Changing the names of x-axis values from x to bank names
 plt.xticks(x, bank_names)
+plt.yticks([i for i in range(0, 140, 20)], y)
 # Adding legend to graph
 plt.legend(loc=(0.4, 0.9), ncol=2)
 # Add title to graph with positon left of graph
