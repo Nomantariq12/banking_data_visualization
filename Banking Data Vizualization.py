@@ -21,7 +21,7 @@ plt.style.use("fivethirtyeight")
 
 # # Investment in PIB's as a Proportion of their own invsetment portfolio
 
-# In[8]:
+# In[3]:
 
 
 # Different Bank Data
@@ -306,6 +306,52 @@ plt.grid(axis="x")
 # Saving plot in png format
 plt.savefig("sectoral_adr_vs_idr.png")
 # Showing Plot
+plt.show()
+
+
+# ===================================================================================================================
+
+# # Comparison of ADR in 2012 and 2021
+
+# In[23]:
+
+
+# Raw Data
+adr12 = [76, 78, 55, 50, 45, 30, 55, 65, 40, 52, 49, 55, 45, 60, 74, 72, 68, 58]
+adr21 = [115, 70, 68, 65, 60, 58, 55, 51, 51, 50, 49, 48, 49, 45, 43, 46, 42, 56]
+names = "sbl fabl bafl bok bahl jsbl hmb bop mebl akbl mcb abl hbl ubl nbp snbl scblp average"
+
+# Coverting Banks names to a List
+bank_names = [i.upper() for i in names.split(" ")]
+# Creating Values for X-axis
+x = np.arange(len(adr12))
+
+# Setting Styling, Figure Size and Title Size
+plt.style.use("fivethirtyeight")
+plt.rcParams["figure.figsize"] = (20, 8)
+plt.rcParams["axes.titlesize"] = 24
+
+# Plotting values for x and adr12
+plt.scatter(x, adr12, s=100, label="CY12")
+
+# Plotting values for x and adr21
+plt.scatter(x, adr21, s=100, label="CY21")
+
+# Showing only grids line parrallel to x-axis
+plt.grid(axis="x")
+# Setting the manual values for Y-axis
+plt.ylim((0, 125))
+# Changing the names of x-axis values from x to bank names
+plt.xticks(x, bank_names)
+# Adding legend to graph
+plt.legend(loc=(0.4, 0.9), ncol=2)
+# Add title to graph with positon left of graph
+plt.title("Comparison of ADR in 2012 and 2021", loc="left")
+# Add name for x-axis
+plt.xlabel("Bank")
+# Saving figure in PNG format
+plt.savefig("comparison_of_adr_in_2012_and_2021.png")
+# Showing Graph
 plt.show()
 
 
